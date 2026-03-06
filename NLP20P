@@ -1,0 +1,16 @@
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+
+documents = [
+    "I love natural language processing",
+    "Machine learning is interesting",
+    "Natural language processing and machine learning"
+]
+
+query = ["natural language"]
+
+vectorizer = TfidfVectorizer()
+tfidf_matrix = vectorizer.fit_transform(documents + query)
+
+similarity = cosine_similarity(tfidf_matrix[-1], tfidf_matrix[:-1])
+print("Document Ranking:", similarity)
