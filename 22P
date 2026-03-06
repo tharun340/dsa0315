@@ -1,0 +1,18 @@
+def resolve_reference(text):
+    sentences = text.split(".")
+    nouns = []
+    resolved = []
+
+    for sentence in sentences:
+        words = sentence.split()
+        for word in words:
+            if word.lower() in ["he", "she", "it"] and nouns:
+                resolved.append(nouns[-1])
+            else:
+                resolved.append(word)
+                if word.istitle():
+                    nouns.append(word)
+    return " ".join(resolved)
+
+text = "John went home. He was tired."
+print(resolve_reference(text))
