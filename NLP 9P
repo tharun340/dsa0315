@@ -1,0 +1,23 @@
+import re
+
+def regex_tagger(sentence):
+    words = sentence.split()
+    tagged = []
+
+    for word in words:
+        if re.match(r'.*ing$', word):
+            tag = "VBG"
+        elif re.match(r'.*ed$', word):
+            tag = "VBD"
+        elif re.match(r'.*ly$', word):
+            tag = "RB"
+        elif re.match(r'.*s$', word):
+            tag = "NNS"
+        else:
+            tag = "NN"
+        tagged.append((word, tag))
+
+    return tagged
+
+sentence = "The boys are playing happily"
+print(regex_tagger(sentence))
