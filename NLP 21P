@@ -1,0 +1,16 @@
+import nltk
+
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger')
+
+sentence = "The smart student solved the difficult problem"
+tokens = nltk.word_tokenize(sentence)
+pos_tags = nltk.pos_tag(tokens)
+
+grammar = "NP: {<DT>?<JJ>*<NN>}"
+cp = nltk.RegexpParser(grammar)
+tree = cp.parse(pos_tags)
+
+for subtree in tree.subtrees():
+    if subtree.label() == "NP":
+        print("Noun Phrase:", " ".join(word for word, tag in subtree))
