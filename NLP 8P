@@ -1,0 +1,16 @@
+import random
+
+training_data = {
+    "I": ["PRP"],
+    "run": ["VB", "NN"],
+    "fast": ["RB", "JJ"]
+}
+
+sentence = ["I", "run", "fast"]
+
+for word in sentence:
+    if word in training_data:
+        tag = random.choice(training_data[word])
+    else:
+        tag = "NN"
+    print((word, tag))
