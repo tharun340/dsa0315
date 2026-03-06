@@ -1,0 +1,20 @@
+import re
+
+text = "My name is Tharun. My phone number is 9876543210 and my email is tharun123@gmail.com"
+
+pattern_name = r"Tharun"
+match_name = re.search(pattern_name, text)
+
+if match_name:
+    print("Name found:", match_name.group())
+
+pattern_phone = r"\d{10}"
+phone = re.findall(pattern_phone, text)
+print("Phone number:", phone)
+
+pattern_email = r"\S+@\S+"
+email = re.findall(pattern_email, text)
+print("Email:", email)
+
+new_text = re.sub(r"Tharun", "Arun", text)
+print("Updated Text:", new_text)
