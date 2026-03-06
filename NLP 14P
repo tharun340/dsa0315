@@ -1,0 +1,9 @@
+def check_agreement(subject, verb):
+    if subject in ["He", "She", "It"] and not verb.endswith("s"):
+        return "Agreement Error"
+    if subject in ["I", "You", "We", "They"] and verb.endswith("s"):
+        return "Agreement Error"
+    return "Correct"
+
+print(check_agreement("He", "runs"))
+print(check_agreement("They", "runs"))
