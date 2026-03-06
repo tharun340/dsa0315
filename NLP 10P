@@ -1,0 +1,14 @@
+def transformation_tagger(sentence):
+    words = sentence.split()
+    tagged = [(word, "NN") for word in words]
+
+    for i, (word, tag) in enumerate(tagged):
+        if word.endswith("ing"):
+            tagged[i] = (word, "VBG")
+        if word.lower() in ["is", "am", "are"]:
+            tagged[i] = (word, "VB")
+
+    return tagged
+
+sentence = "He is running"
+print(transformation_tagger(sentence))
